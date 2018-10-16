@@ -61,7 +61,7 @@ function start() {
   navigator.mediaDevices
     .getUserMedia({
       audio: true,
-      video: true
+      video: false
     })
     .then(gotStream)
     .catch(e => alert(`getUserMedia() error: ${e.name}`));
