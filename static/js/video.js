@@ -61,7 +61,7 @@ function start() {
   navigator.mediaDevices
     .getUserMedia({
       audio: true,
-      video: false
+      video: true
     })
     .then(gotStream)
     .catch(e => alert(`getUserMedia() error: ${e.name}`));
@@ -80,7 +80,13 @@ function call() {
   if (audioTracks.length > 0) {
     console.log(`Using audio device: ${audioTracks[0].label}`);
   }
-  const servers = null;
+  const servers = {
+    iceServers: [
+        {
+          urls: 'stun:stun2.l.google.com:19302'
+        }
+    ]
+  };
   pc1 = new RTCPeerConnection(servers);
   console.log('Created local peer connection object pc1');
   pc1.onicecandidate = e => onIceCandidate(pc1, e);

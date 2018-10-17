@@ -10,4 +10,5 @@ def video():
 
 if __name__ == '__main__':
     app.env = ''
+    #app.run('127.0.0.1',port=9997, debug=True)
     app.run('120.27.55.146',port=9997, debug=True)
